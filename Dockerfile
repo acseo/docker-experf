@@ -1,4 +1,4 @@
-FROM php:5.6.28-apache
+FROM php:5.4.45-apache
 
 ################################################################################
 # Paramétrage de Apache
@@ -15,12 +15,18 @@ RUN \
 RUN \
     apt-get -qq update --fix-missing && \
     apt-get -qq install -y build-essential \
+        wget \
+        libxrender-dev \
+        libicu-dev \
         zip \
         unzip \
         vim \
         curl \
         xvfb \
         wkhtmltopdf
+
+RUN \
+    docker-php-ext-install mysqli pdo pdo_mysql mbstring intl
 
 WORKDIR /var/www/html
 
@@ -29,7 +35,7 @@ WORKDIR /var/www/html
 ################################################################################
 
 RUN \
-    wget https://raw.githubusercontent.com/composer/getcomposer.org/1b137f8bf6db3e79a38a5bc45324414a6b1f9df2/web/installer -O - -q | php -- --quiet
+    wget https://raw.githubusercontent.com/composer/getcomposer.org/a309e1d89ded6919935a842faeaed8e888fbfe37/web/installer -O - -q | php -- --quiet
 
 ################################################################################
 # Suppression des fichiers temporaires.
