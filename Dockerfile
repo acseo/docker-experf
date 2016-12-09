@@ -69,4 +69,4 @@ RUN \
 
 COPY wkhtmltopdf.sh /usr/bin/
 
-RUN chmod +x /usr/local/bin/wkhtmltopdf.sh
+RUN chmod +x /usr/bin/wkhtmltopdf.sh
