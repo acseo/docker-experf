@@ -67,6 +67,6 @@ RUN \
 # Configuration de wkhtmltopdf
 ################################################################################
 
-COPY wkhtmltopdf.sh /usr/local/bin/
+COPY wkhtmltopdf.sh /usr/bin/
 
 RUN chmod +x /usr/local/bin/wkhtmltopdf.sh
