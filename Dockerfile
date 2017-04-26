@@ -60,8 +60,8 @@ RUN \
 ################################################################################
 
 RUN \
-    mkdir -p /var/www/.composer && \
-    chown -R www-data:www-data /var/www/.composer
+    mkdir -p /.composer && \
+    chown -R www-data:www-data /.composer
 
 ################################################################################
 # Configuration de wkhtmltopdf
