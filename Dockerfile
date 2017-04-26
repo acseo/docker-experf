@@ -70,3 +70,11 @@ RUN \
 COPY wkhtmltopdf.sh /usr/bin/
 
 RUN chmod +x /usr/bin/wkhtmltopdf.sh
+
+################################################################################
+# Installation de git
+################################################################################
+
+RUN \
+    apt-get -qq update --fix-missing && \
+    apt-get -qq install git
