@@ -23,10 +23,11 @@ RUN \
         vim \
         curl \
         xvfb \
-        wkhtmltopdf
+        wkhtmltopdf \
+        libpng-dev
 
 RUN \
-    docker-php-ext-install mysqli pdo pdo_mysql mbstring intl
+    docker-php-ext-install mysqli pdo pdo_mysql mbstring intl gd
 
 WORKDIR /var/www/html
 
