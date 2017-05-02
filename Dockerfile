@@ -62,7 +62,8 @@ RUN \
 
 RUN \
     mkdir -p /.composer && \
-    chown -R www-data:www-data /.composer
+    chown -R www-data:www-data /.composer && \
+    chmod -R a+w /.composer
 
 ################################################################################
 # Configuration de wkhtmltopdf
