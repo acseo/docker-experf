@@ -16,6 +16,7 @@ RUN \
     apt-get -qq update --fix-missing && \
     apt-get -qq install -y build-essential \
         wget \
+        git \
         libxrender-dev \
         libicu-dev \
         zip \
@@ -24,9 +25,12 @@ RUN \
         curl \
         xvfb \
         wkhtmltopdf \
-        libpng-dev
+        libpng-dev \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev
 
 RUN \
+    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     docker-php-ext-install mysqli pdo pdo_mysql mbstring intl gd
 
 WORKDIR /var/www/html
@@ -61,9 +65,8 @@ RUN \
 ################################################################################
 
 RUN \
-    mkdir -p /.composer && \
-    chown -R www-data:www-data /.composer && \
-    chmod -R a+w /.composer
+    mkdir -p /var/www/.composer && \
+    chown -R www-data:www-data /var/www/.composer
 
 ################################################################################
 # Configuration de wkhtmltopdf
@@ -72,11 +75,3 @@ RUN \
 COPY wkhtmltopdf.sh /usr/bin/
 
 RUN chmod +x /usr/bin/wkhtmltopdf.sh
-
-################################################################################
-# Installation de git
-################################################################################
-
-RUN \
-    apt-get -qq update --fix-missing && \
-    apt-get -qq install git
