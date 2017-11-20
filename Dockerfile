@@ -25,6 +25,7 @@ RUN \
         curl \
         xvfb \
         wkhtmltopdf \
+        php5-gd \
         libpng-dev \
         libfreetype6-dev \
         libjpeg62-turbo-dev
