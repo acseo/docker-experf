@@ -24,7 +24,6 @@ RUN \
         vim \
         curl \
         xvfb \
-        wkhtmltopdf \
         php5-gd \
         libpng-dev \
         libfreetype6-dev \
@@ -42,6 +41,16 @@ WORKDIR /var/www/html
 
 RUN \
     wget https://raw.githubusercontent.com/composer/getcomposer.org/a309e1d89ded6919935a842faeaed8e888fbfe37/web/installer -O - -q | php -- --quiet
+
+################################################################################
+# Installation de wkhtmltopdf
+################################################################################
+
+RUN \
+    wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz --quiet && \
+    tar vxf wkhtmltox-0.12.3_linux-generic-amd64.tar.xz && \
+    mv wkhtmltox/bin/wk* /usr/bin/ && \
+    rm -rf wkhtmltox*
 
 ################################################################################
 # Suppression des fichiers temporaires.
